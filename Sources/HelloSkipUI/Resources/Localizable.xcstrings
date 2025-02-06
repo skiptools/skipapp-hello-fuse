@@ -30,7 +30,7 @@
         }
       }
     },
-    "Button!" : {
+    "Count binding: %lld" : {
 
     },
     "Dark" : {
@@ -61,6 +61,12 @@
           }
         }
       }
+    },
+    "FIRST" : {
+
+    },
+    "Go to FIRST" : {
+
     },
     "Hello" : {
 
@@ -123,6 +129,9 @@
         }
       }
     },
+    "Increment" : {
+
+    },
     "Light" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -181,6 +190,9 @@
         }
       }
     },
+    "Observable count: %lld" : {
+
+    },
     "Powered by Skip and %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -209,6 +221,12 @@
           }
         }
       }
+    },
+    "Push binding" : {
+
+    },
+    "SECOND" : {
+
     },
     "Settings" : {
       "extractionState" : "stale",
@@ -242,6 +260,9 @@
     "SkipFuseUI" : {
 
     },
+    "State count: %lld" : {
+
+    },
     "System" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -270,9 +291,6 @@
           }
         }
       }
-    },
-    "This is a:" : {
-
     },
     "Welcome" : {
       "extractionState" : "stale",
