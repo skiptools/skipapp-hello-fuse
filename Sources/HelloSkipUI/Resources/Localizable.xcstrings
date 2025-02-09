@@ -30,7 +30,13 @@
         }
       }
     },
+    "Color scheme: %@" : {
+
+    },
     "Count binding: %lld" : {
+
+    },
+    "Counter: %lld" : {
 
     },
     "Dark" : {
@@ -225,6 +231,21 @@
     "Push binding" : {
 
     },
+    "Push color scheme" : {
+
+    },
+    "Push color scheme (dark)" : {
+
+    },
+    "Push counter" : {
+
+    },
+    "Row %@" : {
+
+    },
+    "Row %lld" : {
+
+    },
     "SECOND" : {
 
     },
@@ -291,6 +312,9 @@
           }
         }
       }
+    },
+    "THIRD" : {
+
     },
     "Welcome" : {
       "extractionState" : "stale",

@@ -38,6 +38,17 @@ public struct ContentView : View {
                     NavigationLink("Push binding") {
                         BindingView(countBinding: $count)
                     }
+                    NavigationLink("Push counter") {
+                        CounterView()
+                            .environment(counter)
+                    }
+                    NavigationLink("Push color scheme") {
+                        ColorSchemeView()
+                    }
+                    NavigationLink("Push color scheme (dark)") {
+                        ColorSchemeView()
+                            .colorScheme(.dark)
+                    }
                 }
                 .border(.red, width: 3)
             }
@@ -53,13 +64,33 @@ public struct ContentView : View {
             .tabItem {
                 Text("SECOND")
             }
+
+            List {
+                ForEach(countValues(), id: \.id) { cv in
+                    Text("Row \(cv.text)")
+                }
+            }
+            .tag(Tab.third)
+            .tabItem {
+                Text("THIRD")
+            }
         }
+    }
+
+    private func countValues() -> [CountValue] {
+        return (0..<count).map { CountValue(id: $0) }
+    }
+
+    private struct CountValue {
+        var id: Int
+        var text: String { String(describing: id) }
     }
 }
 
 enum Tab : Hashable {
     case first
     case second
+    case third
 }
 
 struct BindingView : View {
@@ -72,6 +103,29 @@ struct BindingView : View {
                 logger.error("TAP!")
                 countBinding += 1
             }
+        }
+    }
+}
+
+struct CounterView : View {
+    @Environment(Counter.self) var counter
+
+    var body: some View {
+        HStack {
+            Text("Counter: \(counter.count)")
+            Button("Increment") {
+                counter.count += 1
+            }
+        }
+    }
+}
+
+struct ColorSchemeView : View {
+    @Environment(\.colorScheme) var colorScheme
+
+    var body: some View {
+        HStack {
+            Text("Color scheme: \(String(describing: colorScheme))")
         }
     }
 }
