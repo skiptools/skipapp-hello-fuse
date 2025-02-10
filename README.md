@@ -1,7 +1,7 @@
 # HelloSkipFuse
 
 This is a [Skip](https://skip.tools) dual-platform app project.
-It builds a native app for both iOS and Android.
+It builds a native app for both iOS and Android using compiled Swift and SwiftUI.
 
 ## Building
 
@@ -12,7 +12,7 @@ into a Kotlin Gradle project for Android using the Skip plugin.
 Building the module requires that Skip be installed using
 [Homebrew](https://brew.sh) with `brew install skiptools/skip/skip`.
 
-This will also install the necessary transpiler prerequisites:
+This will also install the necessary Android prerequisites:
 Kotlin, Gradle, and the Android build tools.
 
 Installation prerequisites can be confirmed by running `skip checkup`.
@@ -39,4 +39,4 @@ launch the HelloSkipFuseApp target from Xcode.
 A build phases runs the "Launch Android APK" script that
 will deploy the transpiled app a running Android emulator or connected device.
 Logging output for the iOS app can be viewed in the Xcode console, and in
-Android Studio's logcat tab for the transpiled Kotlin app.
+Android Studio's Logcat tab for the generated Android app.
