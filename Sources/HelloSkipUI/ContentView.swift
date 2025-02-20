@@ -1,3 +1,4 @@
+import Foundation
 import SkipFuse
 #if os(Android)
 import SkipFuseUI
@@ -10,6 +11,7 @@ let logger = Logger(subsystem: "HelloSkipFuse", category: "ContentView")
 public struct ContentView : View {
     @State var selectedTab: Tab = .first
     @State var counter = Counter()
+    @State var persistent = PersistentCounter()
     @State var count = 0
 
     public init() {
@@ -33,6 +35,13 @@ public struct ContentView : View {
                         Button("Increment") {
                             logger.error("TAP!")
                             count += 1
+                        }
+                    }
+                    HStack {
+                        Text("Persistent count: \(persistent.count)")
+                        Button("Increment") {
+                            logger.error("TAP!")
+                            persistent.count += 1
                         }
                     }
                     NavigationLink("Push binding") {
@@ -132,4 +141,10 @@ struct ColorSchemeView : View {
 
 @Observable class Counter {
     var count = 0
+}
+
+@Observable class PersistentCounter {
+    var count: Int = UserDefaults.bridged.integer(forKey: "pcount") {
+        didSet { UserDefaults.bridged.set(count, forKey: "pcount") }
+    }
 }
