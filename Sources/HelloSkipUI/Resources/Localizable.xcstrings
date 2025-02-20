@@ -199,6 +199,9 @@
     "Observable count: %lld" : {
 
     },
+    "Persistent count: %lld" : {
+
+    },
     "Powered by Skip and %@" : {
       "extractionState" : "stale",
       "localizations" : {
