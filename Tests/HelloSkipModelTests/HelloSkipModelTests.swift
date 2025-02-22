@@ -1,7 +1,7 @@
 import XCTest
 import OSLog
 import Foundation
-import SkipBridgeKt
+import SkipBridge
 @testable import HelloSkipModel
 
 let logger: Logger = Logger(subsystem: "HelloSkipModel", category: "Tests")
