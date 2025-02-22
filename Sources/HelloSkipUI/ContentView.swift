@@ -57,10 +57,6 @@ public struct ContentView : View {
                     NavigationLink("Push color scheme") {
                         ColorSchemeView()
                     }
-                    NavigationLink("Push color scheme (dark)") {
-                        ColorSchemeView()
-                            .colorScheme(.dark)
-                    }
                 }
                 .border(.red, width: 3)
             }
