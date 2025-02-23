@@ -23,6 +23,9 @@ public struct ContentView : View {
                 VStack {
                     Text("Hello").foregroundStyle(.secondary)
                     Text("SkipFuseUI").foregroundStyle(.red).colorInvert()
+                    #if os(Android)
+                    ComposeView { HelloComposer(message: "Hello from Compose!", binding: $count) }
+                    #endif
                     HStack {
                         Text("Observable count: \(counter.count)")
                         Button("Increment") {
@@ -53,10 +56,6 @@ public struct ContentView : View {
                     }
                     NavigationLink("Push color scheme") {
                         ColorSchemeView()
-                    }
-                    NavigationLink("Push color scheme (dark)") {
-                        ColorSchemeView()
-                            .colorScheme(.dark)
                     }
                 }
                 .border(.red, width: 3)
@@ -143,26 +142,24 @@ struct ColorSchemeView : View {
     var count = 0
 }
 
-/* error with static extension on iOS:
-
- Undefined symbols for architecture arm64:
-   "static (extension in SkipAndroidBridge):__C.NSUserDefaults.bridged.getter : __C.NSUserDefaults", referenced from:
-       variable initialization expression of HelloSkipUI.PersistentCounter.count : Swift.Int in HelloSkipUI.o
-       HelloSkipUI.PersistentCounter.(_count in _E76AB2E9ECEBE166E963C7B51F10E777).didset : Swift.Int in HelloSkipUI.o
-       HelloSkipUI.PersistentCounter.init() -> HelloSkipUI.PersistentCounter in HelloSkipUI.o
- ld: symbol(s) not found for architecture arm64
- clang: error: linker command failed with exit code 1 (use -v to see invocation)
-*/
-
-//let defaults = UserDefaults.bridged
-#if os(Android) || ROBOLECTRIC
-let defaults = UserDefaults.bridged
-#else
-let defaults = UserDefaults.standard
-#endif
-
 @Observable class PersistentCounter {
-    var count: Int = defaults.integer(forKey: "pcount") {
-        didSet { defaults.set(count, forKey: "pcount") }
+    var count: Int = UserDefaults.standard.integer(forKey: "pcount") {
+        didSet { UserDefaults.standard.set(count, forKey: "pcount") }
     }
 }
+
+#if SKIP
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+
+struct HelloComposer : ContentComposer {
+    let message: String
+    let binding: Binding<Int>
+
+    @Composable func Compose(context: ComposeContext) {
+        Button(onClick: { binding.wrappedValue += 1 }) {
+            Text(message)
+        }
+    }
+}
+#endif
