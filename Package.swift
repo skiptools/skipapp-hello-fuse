@@ -16,11 +16,11 @@ let package = Package(
         .library(name: "HelloSkipModel", type: .dynamic, targets: ["HelloSkipModel"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.2.22"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.4.0"),
         .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-model.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0"),
-        .package(url: "https://source.skip.tools/skip-fuse.git", "0.0.0"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip-fuse.git", from: "1.0.0"),
     ],
     targets: [
         .target(name: "HelloSkipFuse", dependencies: [
