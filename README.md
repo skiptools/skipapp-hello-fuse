@@ -1,6 +1,6 @@
 # HelloSkipFuse
 
-This is a [Skip](https://skip.tools) dual-platform app project.
+This is a [Skip Fuse](https://skip.tools) dual-platform app project.
 It builds a native app for both iOS and Android using compiled Swift and SwiftUI.
 
 ## Building
