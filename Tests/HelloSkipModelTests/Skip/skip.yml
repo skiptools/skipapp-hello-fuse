@@ -1,3 +1,6 @@
-# Configuration file for https://skip.tools project
+# Configuration file for Skip project
 #build:
 #  contents:
+
+skip:
+  mode: 'transpiled'
